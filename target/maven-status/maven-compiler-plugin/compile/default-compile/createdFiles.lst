@@ -9,6 +9,8 @@ com\imooc\controller\StuController.class
 META-INF\spring-configuration-metadata.json
 com\imooc\InterceptorConfig.class
 com\imooc\SpringBootConfig.class
+com\imooc\my\mapper\MyMapper.class
 com\imooc\Application.class
 com\imooc\pojo\Stu.class
 com\imooc\pojo\MyConfig.class
+com\imooc\utils\GeneratorDisplay.class
