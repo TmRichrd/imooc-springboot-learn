@@ -1,13 +1,17 @@
 server:
-  port: 8080
+  port: 9000
 
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   main:
     allow-bean-definition-overriding: true
   datasource:
     username: root
     password: root
-    type: com.zaxxer.hikari.HikariDataSource
+#    type: com.zaxxer.hikari.HikariDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/imooc-springboot-learn?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=UTC
     hikari:
@@ -30,6 +34,8 @@ spring:
 mybatis:
   type-aliases-package: com.imooc.pojo       # 逆向解析存放的实体类Entity
   mapper-locations: classpath:mappers/*.xml  # 所有mapper映射的文件所在目录位置
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启mybatis 日志打印
 #通用mapper 配置
 mapper:
   mappers: com.imooc.my.mapper.MyMapper

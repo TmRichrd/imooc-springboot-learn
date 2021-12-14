@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController //@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。
 @Slf4j
+@RequestMapping(value = "demo")
 public class HelloController {
-    @RequestMapping("/hello")
     public String hello() {
         return "Hello World!";
     }
@@ -29,19 +29,19 @@ public class HelloController {
     @Autowired
     private MyConfig myConfig;
 
-    @GetMapping("getMyConfig")
+    @GetMapping(value = "getMyConfig")
     public Object getMyConfig() {
         return myConfig;
     }
 
 
-        @GetMapping("getStudent")
-        public Object getStudent() {
+    @GetMapping(value = "getStudent")
+    public Object getStudent() {
             Student stu = new Student();
             stu.setName("jack");
             stu.setAge(18);
             System.out.println(stu.toString());
             log.info(stu.toString());
             return stu;
-        }
+    }
 }

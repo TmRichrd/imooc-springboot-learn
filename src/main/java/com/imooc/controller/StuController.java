@@ -1,27 +1,23 @@
 package com.imooc.controller;
 
-import com.imooc.pojo.MyConfig;
-import com.imooc.pojo.Stu;
-import com.imooc.pojo.Student;
 import com.imooc.utils.JSONResult;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.File;
 import java.util.Map;
-
 @RestController //@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。
 @Slf4j
-@RequestMapping("stu")
+@RequestMapping(value = "stu")
 public class StuController {
-    @GetMapping("/get")
+    @GetMapping(value = "get")
     public String get() {
         return "get";
     }
 
-    @PostMapping("/post")
+    @PostMapping(value = "post")
     public JSONResult post(
             @RequestBody Map<String,Object> map,
             @RequestHeader("token") String token,
@@ -32,16 +28,16 @@ public class StuController {
         log.info(clientId);
         return JSONResult.ok(map);
     }
-    @GetMapping("/put")
+    @GetMapping(value = "put")
     public String put() {
         return "put";
     }
-    @GetMapping("/delete")
+    @GetMapping(value = "delete")
     public String delete() {
         return "delete";
     }
 
-    @PostMapping("upload")
+    @PostMapping(value = "upload")
     public String upload(MultipartFile file) throws Exception{
         file.transferTo(new File("E:/360downloads/imooc-spring-starter/src/main/resources/static/css/"+file.getOriginalFilename()));
         return "上传成功";
